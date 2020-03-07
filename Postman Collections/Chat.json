@@ -1,0 +1,150 @@
+{
+  "info": {
+    "_postman_id": "8914a49d-5369-433c-a428-13c19614be99",
+    "name": "Chat",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Criar Chat",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "id": "02eb33e6-978f-48b3-aa38-5431f07d402f",
+            "exec": [
+              ""
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "_postman_id": "fbe60a50-5472-456e-a47a-cc3e78dc80d9",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": {
+            "password": "Azul@2019**",
+            "username": "integracao.callcenter"
+          }
+        },
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "value": "application/json",
+            "type": "text"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"usuario\": {\n        \"tipo\" : \"cpf\",\n        \"valor\" : \"42155296894\"\n    },\n    \"mensagem\" : \"Estou com problemas com passagem \u00e1rea\",\n\t\"origem\" : \"app\"\n}"
+        },
+        "url": "https://{{url}}.service-now.com/api/x_alabs_callcenter/help_desk_chat/new_chat"
+      },
+      "response": []
+    },
+    {
+      "name": "Atualizar chat",
+      "_postman_id": "930cc94b-b075-43c5-9bc3-b010c2b54081",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "name": "Content-Type",
+            "type": "text",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n\t\"id\": \"990dc7b8db6b2f40cceb5e7cf39619fd\",\n\t\"state\": \"em_atendimento\",\n\t\"message\": \"Alo Brasil, meu corpo, minhas regras!\"\n}"
+        },
+        "url": "https://{{url}}.service-now.com/api/x_alabs_callcenter/help_desk_chat/sendMessage"
+      },
+      "response": []
+    },
+    {
+      "name": "Consulta de mensagens",
+      "_postman_id": "0d93b971-5f55-4c98-a1c6-839ad7baf45d",
+      "protocolProfileBehavior": {
+        "disableBodyPruning": true
+      },
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "https://{{url}}.service-now.com/api/x_alabs_callcenter/help_desk_chat/getMessages?id=990dc7b8db6b2f40cceb5e7cf39619fd",
+          "protocol": "https",
+          "host": [
+            "{{url}}",
+            "service-now",
+            "com"
+          ],
+          "path": [
+            "api",
+            "x_alabs_callcenter",
+            "help_desk_chat",
+            "getMessages"
+          ],
+          "query": [
+            {
+              "key": "id",
+              "value": "990dc7b8db6b2f40cceb5e7cf39619fd"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "auth": {
+    "type": "basic",
+    "basic": {
+      "password": "azul@2019*",
+      "username": "autoseg.integracao"
+    }
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "id": "9e06a499-b9cf-4214-aaed-793983aad369",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "id": "094ffb1b-e428-4ea9-9851-0920d7b75778",
+        "type": "text/javascript",
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "id": "43f2c566-afcd-4a91-aa0f-3e936a5c9f10",
+      "key": "url",
+      "value": "voeazuldev",
+      "type": "string"
+    }
+  ]
+}
